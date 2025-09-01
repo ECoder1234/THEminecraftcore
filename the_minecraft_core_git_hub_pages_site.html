@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    The Minecraft Core — GitHub Pages site
+
+    QUICK DEPLOY (GitHub Pages):
+    1) Create a new repo named: theminecraftcore (or any name)
+    2) Add this file as index.html
+    3) Commit → Settings → Pages → Build and deployment: Deploy from branch → main → /(root)
+    4) Wait for Pages to publish. Your site will be live at https://<your-username>.github.io/<repo-name>/
+
+    Replace the JOIN link (line ~155) with your real invite: https://discord.gg/<code>
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Minecraft Core — Discord Server</title>
+  <meta name="description" content="The Minecraft Core — a friendly, kid‑safe Discord community for Minecraft fans. Join for events, SMPs, tips, and fun." />
+  <meta name="theme-color" content="#16a34a" />
+  <meta property="og:title" content="The Minecraft Core" />
+  <meta property="og:description" content="A friendly Discord server for Minecraft fans. Events, SMPs, tips, and more!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/github/explore/main/topics/minecraft/minecraft.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0e0c;           /* deep night */
+      --card:#0f1511;         /* dark panel */
+      --muted:#93c5aa;        /* pale green */
+      --text:#ecfdf5;         /* mint white */
+      --accent:#22c55e;       /* emerald */
+      --accent-2:#16a34a;     /* darker emerald */
+      --shadow:0 20px 40px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); background:radial-gradient(1200px 800px at 20% -10%, #12361f 0%, rgba(18,54,31,0) 60%),
+      radial-gradient(900px 700px at 110% 10%, #0c3b25 0%, rgba(12,59,37,0) 55%), var(--bg);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      line-height:1.6;
+    }
+    a{color:var(--accent)}
+    img{max-width:100%; height:auto}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+
+    /* Header */
+    .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{left:1rem; top:1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem 1rem; border-radius:10px}
+
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(11,14,12,.55); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.8rem; text-decoration:none}
+    .brand-logo{width:38px; height:38px; border-radius:8px; background:linear-gradient(135deg, #22c55e, #16a34a); box-shadow:var(--shadow); display:grid; place-items:center; font-family:'Press Start 2P', system-ui; color:#0b0e0c; font-size:.9rem}
+    .brand-name{font-weight:800; letter-spacing:.3px}
+    .nav-links{display:flex; gap:1rem}
+    .nav-links a{padding:.5rem .9rem; text-decoration:none; color:var(--text); opacity:.85; border-radius:10px}
+    .nav-links a:hover{background:rgba(255,255,255,.06); opacity:1}
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{padding:72px 0 48px}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center}
+    .hero h1{font-family:'Press Start 2P', Inter, system-ui; font-size:clamp(1.6rem, 3.2vw, 2.4rem); line-height:1.2; margin:0 0 18px}
+    .hero p{margin:0 0 24px; color:var(--muted)}
+    .btns{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:12px 16px; border-radius:14px; text-decoration:none; font-weight:700}
+    .btn.primary{background:var(--accent); color:#062311; box-shadow:0 10px 20px rgba(34,197,94,.25)}
+    .btn.primary:hover{background:var(--accent-2)}
+    .btn.ghost{border:1px solid rgba(255,255,255,.1); color:var(--text)}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px
+    }
+
+    /* Sections */
+    section{padding:40px 0}
+    .section-title{font-weight:800; font-size:1.2rem; letter-spacing:.2px; margin-bottom:12px}
+    .grid-3{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
+    .feature{padding:18px}
+    .feature h3{margin:.3rem 0 .4rem}
+    .muted{color:var(--muted)}
+
+    /* Two-column */
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start}
+
+    /* Server widget */
+    .widget-wrap{display:grid; place-items:center}
+    .widget{width:100%; max-width:420px; height:520px}
+
+    /* Rules list */
+    ol.rules{padding-left:1.2rem; margin:0}
+    ol.rules li{margin:.4rem 0}
+
+    /* Footer */
+    footer{padding:36px 0 60px; color:#cfead9; opacity:.9}
+    footer a{color:#b7f0cf}
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .hero-grid{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .8rem; border-radius:10px; border:1px solid rgba(255,255,255,.1); color:var(--text); background:transparent}
+      .widget{height:500px}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="brand-logo" aria-hidden="true">MC</div>
+        <div class="brand-name">The Minecraft Core</div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#rules">Rules</a>
+        <a href="#server">Server Info</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.nav-links')?.classList.toggle('show')">Menu</button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1>Welcome to <span style="color:var(--accent)">The Minecraft Core</span></h1>
+          <p>Join our friendly Discord community for Minecraft players. We host events, share builds, run SMPs, help with redstone & commands, and keep things kid‑safe and fun.</p>
+          <div class="btns">
+            <!-- TODO: replace invite link below with your real invite URL -->
+            <a class="btn primary" href="https://discord.com/invite/your-code" target="_blank" rel="noopener">Join the Discord</a>
+            <a class="btn ghost" href="#server">View Server Widget</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">What you’ll find</div>
+          <div class="grid-3">
+            <div class="feature card">
+              <strong>Events & SMPs</strong>
+              <p class="muted">Seasonal SMPs, minigame nights, and build battles.</p>
+            </div>
+            <div class="feature card">
+              <strong>Help & Tips</strong>
+              <p class="muted">Redstone, commands, datapacks, mods & add‑ons.</p>
+            </div>
+            <div class="feature card">
+              <strong>Showcase</strong>
+              <p class="muted">Share your best builds, screenshots, and shaders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="two">
+      <div class="card">
+        <div class="section-title">About The Minecraft Core</div>
+        <p>We’re a community of Minecraft fans of all ages. Whether you’re into survival, creative megabases, command blocks, speedrunning, or Bedwars — you’ll find a place here.</p>
+        <p class="muted">Moderation is active and kind. Keep it family‑friendly. Have fun, help others, and respect everyone.</p>
+      </div>
+      <div class="card">
+        <div class="section-title">Quick Links</div>
+        <ul>
+          <li><a href="#rules">Server Rules</a></li>
+          <li><a href="#server">Live Server Status</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules" class="card">
+      <div class="section-title">Rules (Short & Simple)</div>
+      <ol class="rules">
+        <li>Be kind. No bullying, hate speech, or harassment.</li>
+        <li>Keep it family‑friendly. No swearing, slurs, or NSFW.</li>
+        <li>No spam or self‑promo outside the correct channels.</li>
+        <li>Follow Discord ToS and community guidelines.</li>
+        <li>Listen to staff and use common sense.</li>
+      </ol>
+      <p class="muted" style="margin-top:.8rem">Breaking rules may result in warnings, mutes, or bans depending on severity.</p>
+    </section>
+
+    <!-- SERVER WIDGET (YOUR IFRAME) -->
+    <section id="server" class="two">
+      <div class="card widget-wrap">
+        <div class="section-title">Live Server Info</div>
+        <div class="widget">
+          <!-- Required Discord widget iframe (provided) -->
+          <iframe src="https://discord.com/widget?id=1402697017464979617&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="width:100%; height:100%; border:0; border-radius:14px"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title">How to Join</div>
+        <p>Click the <strong>Join the Discord</strong> button at the top (or use your invite link). Verify in <em>#welcome</em>, read the rules, and say hi! You can also check the widget for online members.</p>
+        <p class="muted">Tip: If the widget doesn’t load, make sure your browser allows third‑party embeds for discord.com.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="card">
+      <div class="section-title">FAQ</div>
+      <details>
+        <summary>Is this server kid‑safe?</summary>
+        <p>Yes — moderation is active, swearing/NSFW are not allowed, and we keep a friendly vibe.</p>
+      </details>
+      <details>
+        <summary>Java or Bedrock?</summary>
+        <p>Both! We talk about Java and Bedrock. Events may specify which version they use.</p>
+      </details>
+      <details>
+        <summary>Do you host servers?</summary>
+        <p>We run community SMPs and minigame nights sometimes. Watch <em>#announcements</em> for dates.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="two">
+      <div>
+        <strong>The Minecraft Core</strong><br/>
+        <span class="muted">A Discord community for Minecraft fans.</span>
+      </div>
+      <div style="text-align:right">
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
+      document.querySelectorAll('.card').forEach((el,i)=>{
+        el.animate({opacity:[0,1], transform:['translateY(8px)','translateY(0)']}, {duration:400, delay:80*i, fill:'both', easing:'cubic-bezier(.2,.8,.2,1)'});
+      });
+    }
+  </script>
+</body>
+</html>
